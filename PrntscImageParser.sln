@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageParser.App", "ImageParser.App\ImageParser.App.csproj", "{0AB39A03-FF63-45C9-9BA5-E19FE3881869}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageParser.UnitTests", "ImageParser.UnitTests\ImageParser.UnitTests.csproj", "{68A39A84-2349-455E-9F4B-AEE532B70B35}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0AB39A03-FF63-45C9-9BA5-E19FE3881869}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AB39A03-FF63-45C9-9BA5-E19FE3881869}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AB39A03-FF63-45C9-9BA5-E19FE3881869}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68A39A84-2349-455E-9F4B-AEE532B70B35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68A39A84-2349-455E-9F4B-AEE532B70B35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68A39A84-2349-455E-9F4B-AEE532B70B35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68A39A84-2349-455E-9F4B-AEE532B70B35}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
