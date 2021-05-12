@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using AngleSharp.Html.Parser;
+using ImageParser.App.Options;
 using ImageParser.App.Services;
 using ImageParser.App.Services.Contracts;
 using MediatR;
@@ -35,6 +36,11 @@ namespace ImageParser.App
                     services.AddTransient(provider => new WebClient());
                     services.AddTransient<IHttpRequestsFactory, HttpRequestsFactory>();
                     services.AddHostedService<FileParsingService>();
+
+                    var storageAccountOptions = new StorageAccountOptions();
+                    Configuration.GetSection(StorageAccountOptions.SectionName).Bind(storageAccountOptions);
+                    services.AddSingleton(storageAccountOptions);
+                    services.AddScoped<IBlobStorageService, BlobStorageService>();
                 })
                 .ConfigureLogging(logBuilder =>
                 {

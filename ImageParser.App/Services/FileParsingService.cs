@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using ImageParser.App.Commands;
+using ImageParser.App.MediatR.Commands;
+using ImageParser.App.MediatR.Events;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -26,19 +28,23 @@ namespace ImageParser.App.Services
                 try
                 {
                     var linkToFile = await _mediator.Send(new GetLinkToFile_Cmd(), stoppingToken);
-                    var downloadPath = $@"{Program.Configuration.GetValue<string>("GrabbedFilesFolder")}\{Guid.NewGuid()}.png";
+                    var fileName = $"{ Guid.NewGuid() }.png";
+                    var pathToSave = Path.Combine(Program.Configuration.GetValue<string>("GrabbedFilesFolder"),fileName);
                     if (!string.IsNullOrEmpty(linkToFile))
                     {
-                        _logger.Info($"Link to file {linkToFile}. Starting downloading to local path {downloadPath}");
+                        _logger.Info($"Link to file {linkToFile}. Starting downloading to local path {pathToSave}");
                         var downloadResult = await _mediator.Send(new DownloadFile_Cmd()
                         {
                             LinkToFile = linkToFile,
-                            Path = downloadPath
+                            Path = pathToSave
                         }, stoppingToken);
-                        _logger.Info($"File downloaded.Result: {downloadResult}");
-                    }
 
-                    await Task.Delay(2000, stoppingToken);
+                        await _mediator.Publish(new ImageFileDownloaded_Event()
+                        {
+                            BlobName = fileName,
+                            FileContentBytes = downloadResult
+                        }, stoppingToken);
+                    }
                 }
                 catch (Exception e)
                 {

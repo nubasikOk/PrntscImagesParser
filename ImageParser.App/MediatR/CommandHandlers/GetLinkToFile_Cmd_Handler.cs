@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using ImageParser.App.Commands;
+using ImageParser.App.MediatR.Commands;
 using ImageParser.App.Services.Contracts;
 using MediatR;
 
-namespace ImageParser.App.CommandHandlers
+namespace ImageParser.App.MediatR.CommandHandlers
 {
     public class GetLinkToFile_Cmd_Handler : IRequestHandler<GetLinkToFile_Cmd, string>
     {

@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using AngleSharp.Html.Parser;
-using ImageParser.App.Commands;
+using ImageParser.App.MediatR.Commands;
 using MediatR;
 
-namespace ImageParser.App.CommandHandlers
+namespace ImageParser.App.MediatR.CommandHandlers
 {
     public class ParseLinkFromResponse_Cmd_Handler : IRequestHandler<ParseLinkFromResponse_Cmd, string>
     {
