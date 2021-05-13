@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ImageParser.App.Options;
-using ImageParser.App.Services.Contracts;
+using ImageStorage.API.Options;
+using ImageStorage.API.Services.Contracts;
 using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Blob;
 
-namespace ImageParser.App.Services
+namespace ImageStorage.API.Services
 {
     public class BlobStorageService : IBlobStorageService
     {

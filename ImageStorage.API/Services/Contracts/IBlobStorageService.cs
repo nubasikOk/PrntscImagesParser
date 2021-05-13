@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.Azure.Storage.Blob;
 
-namespace ImageParser.App.Services.Contracts
+namespace ImageStorage.API.Services.Contracts
 {
     public interface IBlobStorageService
     {
